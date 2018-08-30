@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animation using keyboard Events</title>
+</head>
+<body>
+    <script type="text/javascript">
+        document.onkeydown = animateKeys;
+        
+        var colors = ['red','blue','yellow','green'];
+        
+        function animateKeys (event){
+            var keyCode = event.keyCode;
+            var c = String.fromCharCode(keyCode);
+            
+            var key = document.createElement("div");
+            document.body.appendChild(key);
+            
+            key.style.position = "absolute";
+            
+            var randX = Math.round(Math.random() * window.innerWidth);
+            var randY = Math.round(Math.random() * window.innerHeight);
+            
+            key.style.left = randX + 'px';
+            key.style.top = randY + 'px';
+            key.innerText = c;
+            
+            var color = colors[Math.floor(Math.random() * colors.length)];
+            key.style.color = color;
+            
+            key.style.transition = "all 0.5s linear 0s";
+            key.style.left = key.offsetLeft - 30 + 'px';
+            key.style.top = key.offsetTop - 30 + 'px';
+            key.style.fontSize = "100px";
+            key.style.opacity = 0;
+        }
+    </script>
+</body>
+</html>
